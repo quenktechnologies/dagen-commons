@@ -6,6 +6,13 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha --opts mocha.opts $(find test -name *_test.ts)"
   },
+  "bin": {
+
+    "camelcase": "./bin/camelcase.js",
+
+    "lowercase": "./bin/camelcase.js"
+
+  },
   "files": [
     "lib"
   ],
