@@ -51,6 +51,8 @@ export class ValidationPlugin extends AbstractPlugin {
 
         g.env.addGlobal('import2TS', toString);
 
+        g.env.addGlobal('getPrec', (s: Schema) => s[this.key]);
+
         return pure(g);
 
     }
