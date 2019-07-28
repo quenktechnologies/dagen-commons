@@ -60,38 +60,41 @@ export const check = (key: string): Schema => ({
         }
     },
 
-    additionalProperties: {
-
-        type: 'object',
+    properties: {
 
         properties: {
 
-            [key]: {
+            type: 'object',
 
-                type: 'sum',
+            properties: {
 
-                variant: {
+                [key]: {
 
-                    string: {
+                    type: 'sum',
 
-                        type: 'ref',
+                    variant: {
 
-                        ref: 'string'
+                        string: {
 
-                    },
+                            type: 'ref',
 
-                    array: {
+                            ref: 'string'
 
-                        type: 'ref',
+                        },
 
-                        ref: 'array'
+                        array: {
+
+                            type: 'ref',
+
+                            ref: 'array'
+
+                        }
 
                     }
 
                 }
 
             }
-
         }
     }
 })
