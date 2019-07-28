@@ -1,6 +1,6 @@
 {
   "name": "@quenk/dagen-commons",
-  "version": "1.10.0",
+  "version": "0.0.1",
   "description": "Commons library for using dagen to generate project boilerplate.",
   "types": "lib/index.d.ts",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "bin": {
     "camelcase": "./bin/camelcase.js",
-    "lowercase": "./bin/camelcase.js"
+    "lowercase": "./bin/lowercase.js"
   },
   "files": [
     "lib"
