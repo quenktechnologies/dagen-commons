@@ -1,17 +1,14 @@
 {
   "name": "@quenk/dagen-commons",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "description": "Commons library for using dagen to generate project boilerplate.",
   "types": "lib/index.d.ts",
   "scripts": {
     "test": "./node_modules/.bin/mocha --opts mocha.opts $(find test -name *_test.ts)"
   },
   "bin": {
-
     "camelcase": "./bin/camelcase.js",
-
     "lowercase": "./bin/camelcase.js"
-
   },
   "files": [
     "lib"
