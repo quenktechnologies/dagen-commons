@@ -49,7 +49,7 @@ export class ValidationPlugin extends AbstractPlugin {
 
     configureGenerator(g: Nunjucks) {
 
-        g.env.addGlobal('import2TS', toString);
+        g.env.addGlobal('imports2TS', toString);
 
         g.env.addGlobal('getPrec', (s: Schema) => s[this.key]);
 
