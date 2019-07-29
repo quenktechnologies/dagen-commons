@@ -5,8 +5,6 @@ import { ValidationPlugin } from '../validation';
  * CheckPlugin
  */
 export declare class CheckPlugin extends ValidationPlugin {
-    key: string;
-    name: string;
     configureGenerator(g: Nunjucks): import("@quenk/noni/lib/control/monad/future").Future<Nunjucks>;
 }
 /**

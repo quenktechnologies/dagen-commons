@@ -8,10 +8,6 @@ import { parameters2TS } from '../../schema/parameters';
  */
 export class CheckPlugin extends ValidationPlugin {
 
-    key = 'checks';
-
-    name = 'checks';
-
     configureGenerator(g: Nunjucks) {
 
         g.env.addGlobal('parameters2TS', parameters2TS);
@@ -25,4 +21,5 @@ export class CheckPlugin extends ValidationPlugin {
 /**
  * create a new ValidationPlugin instance.
  */
-export const create = (ctx: Context) => new CheckPlugin(ctx);
+export const create = (ctx: Context) =>
+    new CheckPlugin('checks', 'checks', ctx);

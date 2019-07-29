@@ -14,11 +14,13 @@ import { ImportMap, addMemberMap } from '../../schema/imports';
  */
 export class ValidationPlugin extends AbstractPlugin {
 
+    constructor(public name: string, public key: string, public ctx: Context) {
+
+        super(ctx);
+
+    }
+
     schema: Schema = <Schema>{};
-
-    key = 'validation';
-
-    name = 'validation';
 
     configure(c: Conf): Future<Conf> {
 
@@ -64,4 +66,5 @@ export class ValidationPlugin extends AbstractPlugin {
 /**
  * create a new ValidationPlugin instance.
  */
-export const create = (ctx: Context) => new ValidationPlugin(ctx);
+export const create = (ctx: Context) =>
+    new ValidationPlugin('validation', 'validation', ctx);

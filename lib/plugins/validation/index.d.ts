@@ -8,9 +8,11 @@ import { Nunjucks } from '@quenk/dagen/lib/compiler/generator/nunjucks';
  * in dagen templates.
  */
 export declare class ValidationPlugin extends AbstractPlugin {
-    schema: Schema;
-    key: string;
     name: string;
+    key: string;
+    ctx: Context;
+    constructor(name: string, key: string, ctx: Context);
+    schema: Schema;
     configure(c: Conf): Future<Conf>;
     checkSchema(): Future<Schema[]>;
     beforeOutput(s: Schema): Future<Schema>;
