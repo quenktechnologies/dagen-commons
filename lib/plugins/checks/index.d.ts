@@ -1,4 +1,5 @@
 import { Context } from '@quenk/dagen/lib/compiler';
+import { Nunjucks } from '@quenk/dagen/lib/compiler/generator/nunjucks';
 import { ValidationPlugin } from '../validation';
 /**
  * CheckPlugin
@@ -6,6 +7,7 @@ import { ValidationPlugin } from '../validation';
 export declare class CheckPlugin extends ValidationPlugin {
     key: string;
     name: string;
+    configureGenerator(g: Nunjucks): import("@quenk/noni/lib/control/monad/future").Future<Nunjucks>;
 }
 /**
  * create a new ValidationPlugin instance.
