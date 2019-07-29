@@ -9,6 +9,7 @@ import { map, clone } from '@quenk/noni/lib/data/record';
 import { takePointers, Spec } from '../../module/pointer';
 import { fromList } from '../../module/pointer/import';
 import { ModuleMemberMap } from '../../module/pointer/member';
+import { dedupe } from '@quenk/noni/lib/data/array';
 
 /**
  * takeImports from the preconditions declared on a Schema at "key"
@@ -23,7 +24,7 @@ export const takeImports = (s: Schema, key: string)
 
     let group = fromList(eList.takeRight());
 
-    return right(map(group, g => g.map(i => i.member)));
+    return right(map(group, g => dedupe(g.map(i => i.member))));
 
 }
 

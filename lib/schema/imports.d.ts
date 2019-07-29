@@ -4,6 +4,10 @@ import { ModuleMemberMap } from '../module/pointer/member';
  */
 export declare type TypeScript = string;
 /**
+ * Spec type.
+ */
+export declare type Spec = string | string[] | AliasMap;
+/**
  * ImportMap map.
  *
  * A string value indicates a single import.
@@ -17,15 +21,36 @@ export declare type TypeScript = string;
  * by abusing aliased imports.
  */
 export interface ImportMap {
-    [key: string]: string | string[] | {
-        [key: string]: string;
-    };
+    [key: string]: Spec;
+}
+/**
+ * AliasMaps map.
+ */
+export interface AliasMaps {
+    [key: string]: AliasMap;
+}
+/**
+ * AliasMap where the key is the identifier and the value is the member
+ * imported.
+ */
+export interface AliasMap {
+    [key: string]: string;
 }
 /**
  * toString converts an ImportMap into a string of ECMAScript imports.
  */
 export declare const toString: (imps: ImportMap) => string;
 /**
- * addMemberMap takes to an ImportMap.
+ * addMemberMap to an ImportMap.
  */
 export declare const addMemberMap: (imports: ImportMap, imps: ModuleMemberMap) => ImportMap;
+/**
+ * toAliasMaps converts an ImportMap into a map of AliasMaps.
+ *
+ * Each property will be the module path and the value the aliased imports.
+ */
+export declare const toAliasMaps: (imps: ImportMap) => AliasMaps;
+/**
+ * spec2Map converts an import Spec into an AliasMap.
+ */
+export declare const spec2Map: (s: Spec) => AliasMap;
