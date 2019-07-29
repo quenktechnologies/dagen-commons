@@ -7,6 +7,7 @@ import { check } from './check';
 import { toString } from '../../schema/imports';
 import { takeImports, castPointers } from '../../schema/validation';
 import { ImportMap, addMemberMap } from '../../schema/imports';
+import { parameters2TS } from '../../schema/parameters';
 
 /**
  * ValidationPlugin adds APIs needed to generator validation APIs
@@ -56,6 +57,8 @@ export class ValidationPlugin extends AbstractPlugin {
         g.env.addGlobal('hasTest', (s: Schema) => (s[this.key] != null));
 
         g.env.addGlobal('getTest', (s: Schema) => s[this.key]);
+
+        g.env.addGlobal('parameters2TS', parameters2TS);
 
         return pure(g);
 
