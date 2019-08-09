@@ -6,7 +6,7 @@
 /** imports */
 import { Value } from '@quenk/noni/lib/data/json';
 import { Pointer, Import } from '@quenk/noni/lib/platform/node/module/pointer';
-import { Schema, isObjectType, isSumType } from '@quenk/dagen/lib/schema';
+import { Schema, isObjectType, isSumType, isArrayType } from '@quenk/dagen/lib/schema';
 import { isObject, isString } from '@quenk/noni/lib/data/type';
 import { reduce } from '@quenk/noni/lib/data/record';
 
@@ -60,6 +60,10 @@ export const takePointers =
         if (isObjectType(s) && isObject(s.properties)) {
 
             return reduce(s.properties, imps, (p, c) => takePointers(p, key, c));
+
+        } else if (isArrayType(s)) {
+
+            return takePointers(imps, key, s.items);
 
         } else if (isSumType(s)) {
 
