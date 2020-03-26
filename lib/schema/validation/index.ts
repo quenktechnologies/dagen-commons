@@ -3,13 +3,19 @@ import {
     compileList,
     getMember
 } from '@quenk/noni/lib/platform/node/module/pointer';
-import { Schema, isObjectType, isSumType, isArrayType } from '@quenk/dagen/lib/schema';
 import { isObject, isString } from '@quenk/noni/lib/data/type';
 import { map, clone } from '@quenk/noni/lib/data/record';
+import { dedupe } from '@quenk/noni/lib/data/array';
+import {
+    Schema,
+    isObjectType,
+    isSumType,
+    isArrayType
+} from '@quenk/dagen/lib/schema';
+
 import { takePointers, Spec } from '../../module/pointer';
 import { fromList } from '../../module/pointer/import';
 import { ModuleMemberMap } from '../../module/pointer/member';
-import { dedupe } from '@quenk/noni/lib/data/array';
 
 /**
  * takeImports from the preconditions declared on a Schema at "key"
@@ -51,9 +57,13 @@ export const castPointers = (s: Schema, key: string): Schema => {
 
     }
 
-    if (isObjectType(s) && isObject(s.properties)) {
+    if (isObjectType(s)) {
 
-        s.properties = map(s.properties, c => castPointers(c, key));
+        if (isObject(s.properties))
+            s.properties = map(s.properties, c => castPointers(c, key));
+
+        if (isObject(s.additionalProperties))
+            s.additionalProperties = castPointers(s.additionalProperties, key);
 
     } else if (isArrayType(s)) {
 
