@@ -53,7 +53,7 @@ export const castPointers = (s: Schema, key: string): Schema => {
         let list = (<Spec[]>target).map(m => isString(m) ?
             getMember(m) : `${getMember(m[0])}(${m[1].join(',')})`);
 
-        s[key] = `_every<Type,Type>(${list.join(',')})`;
+        s[key] = `_every<Value, Value>(${list.join(',')})`;
 
     }
 
