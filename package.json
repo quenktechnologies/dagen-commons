@@ -17,18 +17,18 @@
   "author": "Quenk Technologies Limited<info@quenk.com> (http://quenk.com)",
   "license": "Apache-2.0",
   "dependencies": {
-    "@quenk/noni": "^1.35.1"
+    "@quenk/noni": "^1.40.7"
   },
   "devDependencies": {
     "@quenk/dagen": "^1.9.6",
     "@quenk/must": "^1.0.5",
-    "@quenk/test": "^2.1.2",
-    "@types/mocha": "^5.2.7",
-    "@types/node": "^13.1.2",
+    "@quenk/test": "^2.2.4",
+    "@types/mocha": "^8.0.3",
+    "@types/node": "^14.11.10",
     "@types/nunjucks": "^3.1.3",
-    "mocha": "^6.2.2",
-    "ts-node": "^8.5.4",
-    "typedoc": "^0.15.6",
-    "typescript": "^3.7.4"
+    "mocha": "^8.2.0",
+    "ts-node": "^9.0.0",
+    "typedoc": "^0.19.2",
+    "typescript": "^4.0.3"
   }
 }

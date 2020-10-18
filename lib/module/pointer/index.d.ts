@@ -28,4 +28,4 @@ export interface Imports {
  * takePointers extracts all occurences of a key that is assumed to be a
  * Spec.
  */
-export declare const takePointers: (imps: string[], key: string, s: Schema) => string[];
+export declare const takePointers: (imps: Pointer[], key: string, s: Schema) => Pointer[];

@@ -39,7 +39,7 @@ export interface AliasMap {
 /**
  * toString converts an ImportMap into a string of ECMAScript imports.
  */
-export declare const toString: (imps: ImportMap) => string;
+export declare const toString: (imps: ImportMap) => TypeScript;
 /**
  * addMemberMap to an ImportMap.
  */

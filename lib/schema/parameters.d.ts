@@ -31,4 +31,4 @@ export interface Parameter {
 /**
  * parameters2TS converts a parameter list into TypeScript code.
  */
-export declare const parameters2TS: (params: Parameter[]) => string;
+export declare const parameters2TS: (params: Parameter[]) => TypeScript;
