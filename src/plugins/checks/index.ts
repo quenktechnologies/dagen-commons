@@ -16,11 +16,19 @@ export class CheckPlugin extends ValidationPlugin {
 
     beforeOutput(s: Schema) {
 
-        let eImps = takeImports(s, this.key);
+        let keys = [this.key, `${this.key}-complete`, `${this.key}-partial`];
 
-        if (eImps.isLeft()) return <Future<Schema>>raise(eImps.takeLeft());
+        for (let key of keys) {
 
-        s.imports = addMemberMap((<ImportMap>s.imports) || {}, eImps.takeRight());
+            let eimports = takeImports(s, key);
+
+            if (eimports.isLeft())
+                return <Future<Schema>>raise(eimports.takeLeft());
+
+            s.imports = addMemberMap((<ImportMap>s.imports) || {},
+                eimports.takeRight());
+
+        }
 
         s = castPointers(s, this.key);
         s = castPointers(s, `${this.key}-complete`);
