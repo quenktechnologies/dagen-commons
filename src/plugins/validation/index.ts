@@ -1,4 +1,3 @@
-import { Object } from '@quenk/noni/lib/data/json';
 import { AbstractPlugin, Conf } from '@quenk/dagen/lib/plugin';
 import { Context } from '@quenk/dagen/lib/compiler';
 import { Future, pure, raise } from '@quenk/noni/lib/control/monad/future';
@@ -63,28 +62,10 @@ export class ValidationPlugin extends AbstractPlugin {
 
         });
 
-        g.env.addGlobal('hasValidators', (s: Schema) => (s[this.key] != null));
-
-        g.env.addGlobal('hasCompleteChecks', (s: Schema) =>
-            s[this.key] && (<Object>s[this.key])['complete']);
-
-        g.env.addGlobal('hasCompleteChecks', (s: Schema) =>
-            s[this.key] && (<Object>s[this.key])['partial']);
-
-        g.env.addGlobal('getTest', (s: Schema) => {
-
-            console.warn('getTest: is deprecated use getValidators instead.');
-            return s[this.key];
-
-        });
+        g.env.addGlobal('hasValidators', (s: Schema) =>
+            Array.isArray(s[this.key]) && ((<string[]>s[this.key]).length > 0));
 
         g.env.addGlobal('getValidators', (s: Schema) => s[this.key]);
-
-        g.env.addGlobal('getCompleteChecks', (s: Schema) => 
-             (<Object>s[this.key])['complete']);
-
-        g.env.addGlobal('getPartialChecks', (s: Schema) => 
-             (<Object>s[this.key])['partial']);
 
         g.env.addGlobal('parameters2TS', parameters2TS);
 

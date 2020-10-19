@@ -9,5 +9,7 @@ export declare const takeImports: (s: Schema, key: string) => Either<Error, Modu
 /**
  * castPointers turns all occurences of pointers to preconditions into
  * their code equivalent.
+ *
+ * Results are stored as an array.
  */
 export declare const castPointers: (s: Schema, key: string) => Schema;

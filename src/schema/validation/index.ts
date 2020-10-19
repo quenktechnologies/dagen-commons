@@ -37,6 +37,8 @@ export const takeImports = (s: Schema, key: string)
 /**
  * castPointers turns all occurences of pointers to preconditions into
  * their code equivalent.
+ *
+ * Results are stored as an array.
  */
 export const castPointers = (s: Schema, key: string): Schema => {
 
@@ -46,14 +48,12 @@ export const castPointers = (s: Schema, key: string): Schema => {
 
     if (isString(target)) {
 
-        s[key] = getMember(target);
+        s[key] = [getMember(target)];
 
     } else if (Array.isArray(target)) {
 
-        let list = (<Spec[]>target).map(m => isString(m) ?
+        s[key] =  (<Spec[]>target).map(m => isString(m) ?
             getMember(m) : `${getMember(m[0])}(${m[1].join(',')})`);
-
-        s[key] = `_every<Value, Value>(${list.join(',')})`;
 
     }
 
