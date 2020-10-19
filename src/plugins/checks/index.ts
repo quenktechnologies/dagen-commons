@@ -36,32 +36,23 @@ export class CheckPlugin extends ValidationPlugin {
 
         g.env.addGlobal('hasChecks', (s: Schema, mode: string) => {
 
-            if (Array.isArray(s[this.key])) {
+            let key = `${this.key}-${mode}`;
 
-                return ((<string[]>s[this.key]).length > 0);
+            if (Array.isArray(s[key]) && ((<string[]>s[key]).length > 0))
+                return true;
 
-            } else if (mode === 'partial') {
-
-                let key = `${this.key}-partial`;
-                return Array.isArray(s[key]) && ((<string[]>s[key]).length > 0);
-
-            } else {
-
-                let key = `${this.key}-partial`;
-                return Array.isArray(s[key]) && ((<string[]>s[key]).length > 0);
-            }
+            return (Array.isArray(s[this.key]) &&
+                ((<string[]>s[this.key]).length > 0));
 
         });
 
-        g.env.addGlobal('getChecks', (s: Schema, mode:string) => {
+        g.env.addGlobal('getChecks', (s: Schema, mode: string) => {
 
             let ret = <string[]>[];
+            let key = `${this.key}-${mode}`;
 
             if (Array.isArray(s[this.key]))
                 ret = ret.concat(<string[]>s[this.key]);
-
-            let key = this.key + '-'  + (mode === 'partial') ? 
-            'partial' : 'complete';
 
             if (Array.isArray(s[key]))
                 ret = ret.concat(<string[]>s[key]);
