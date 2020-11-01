@@ -79,4 +79,4 @@ export class ValidationPlugin extends AbstractPlugin {
  * create a new ValidationPlugin instance.
  */
 export const create = (ctx: Context) =>
-    new ValidationPlugin('validation', 'validation', ctx);
+    new ValidationPlugin('validation', 'validators', ctx);
