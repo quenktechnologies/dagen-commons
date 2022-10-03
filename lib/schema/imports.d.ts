@@ -10,7 +10,7 @@ export declare type Spec = string | string[] | AliasMap;
 /**
  * ImportMap map.
  *
- * A string value indicates a single import.
+ * A string value indicates a an aggregated import.
  * An array of strings value indicates a list of members to import.
  * A record value indicates a list of aliased imports where the property
  * is the target member and the value is the alias.

@@ -24,7 +24,7 @@ export type Spec = string | string[] | AliasMap;
 /**
  * ImportMap map.
  *
- * A string value indicates a single import.
+ * A string value indicates a an aggregated import.
  * An array of strings value indicates a list of members to import.
  * A record value indicates a list of aliased imports where the property
  * is the target member and the value is the alias.
@@ -68,7 +68,7 @@ export const toString = (imps: ImportMap): TypeScript => {
 
         if (isString(c)) {
 
-            p.push(`import {${c}} from '${k}'`);
+            p.push(`import * as ${c} from '${k}'`);
 
         } else if (Array.isArray(c)) {
 
@@ -158,4 +158,3 @@ export const spec2Map = (s: Spec): AliasMap => {
     return s;
 
 }
-
