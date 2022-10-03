@@ -4,15 +4,3 @@ lib: $(shell find src -type f)
 	mkdir lib
 	cp -R -u src/* lib
 	./node_modules/.bin/tsc --project lib
-
-# Generate typedoc documentation.
-.PHONY: docs
-docs: lib
-	./node_modules/.bin/typedoc \
-	--mode modules \
-	--out $@ \
-	--tsconfig lib/tsconfig.json \
-	--theme minimal lib  \
-	--excludeNotExported \
-	--excludePrivate && \
-	echo "" > docs/.nojekyll
