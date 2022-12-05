@@ -5,7 +5,7 @@ import { Nunjucks } from '@quenk/dagen/lib/compiler/generator/nunjucks';
 import { pure } from '@quenk/noni/lib/control/monad/future';
 import { merge } from '@quenk/noni/lib/data/record';
 
-import { toString } from '../schema/imports';
+import { ImportMap, toString } from '../schema/imports';
 
 /**
  * ImportsPlugin provides helper functions for outputting imports in a 
@@ -22,10 +22,9 @@ export class ImportsPlugin extends AbstractPlugin {
 
     configureGenerator(g: Nunjucks) {
 
-        g.env.addGlobal('addImports', (existing: object, target: object) =>
-            merge(existing, target));
-
-        g.env.addGlobal('imports2TS', toString);
+        g.env.addGlobal('import2TS', 
+          (existing: ImportMap, target: ImportMap = {}) =>
+          toString(merge(existing, target)));
 
         return pure(g);
 
