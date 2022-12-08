@@ -5,7 +5,6 @@ import { Schema } from '@quenk/dagen/lib/schema';
 import { Nunjucks } from '@quenk/dagen/lib/compiler/generator/nunjucks';
 
 import { check } from './check';
-import { toString } from '../../schema/imports';
 import { takeImports, castPointers } from '../../schema/validation';
 import { ImportMap, addMemberMap } from '../../schema/imports';
 import { parameters2TS } from '../../schema/parameters';
@@ -52,8 +51,6 @@ export class ValidationPlugin extends AbstractPlugin {
     }
 
     configureGenerator(g: Nunjucks) {
-
-        g.env.addGlobal('imports2TS', toString);
 
         g.env.addGlobal('hasTest', (s: Schema) => {
 
