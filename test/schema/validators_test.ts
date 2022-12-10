@@ -1,5 +1,6 @@
 import { assert } from '@quenk/test/lib/assert';
 import { castPointers } from '../../src/schema/validation';
+
 import { merge } from '@quenk/noni/lib/data/record';
 
 const schema = () => ({

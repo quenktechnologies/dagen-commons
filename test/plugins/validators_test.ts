@@ -1,7 +1,7 @@
 import { assert } from '@quenk/test/lib/assert';
 import { Context } from '@quenk/dagen/lib/compiler';
 import { FileSystemLoader } from '@quenk/dagen/lib/schema/loader/file-system';
-import { create } from '../../src/plugins/validation';
+import { create } from '../../src/plugins/validators';
 import { merge } from '@quenk/noni/lib/data/record';
 import { attempt, toPromise } from '@quenk/noni/lib/control/monad/future';
 

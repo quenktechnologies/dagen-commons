@@ -3,11 +3,10 @@ import { Future, pure, raise } from '@quenk/noni/lib/control/monad/future';
 import { Schema } from '@quenk/dagen/lib/schema';
 import { Nunjucks } from '@quenk/dagen/lib/compiler/generator/nunjucks';
 
-import { toString } from '../../schema/imports';
 import { takeImports, castPointers } from '../../schema/validation';
 import { ImportMap, addMemberMap } from '../../schema/imports';
 import { parameters2TS } from '../../schema/parameters';
-import { ValidationPlugin } from '../validation';
+import { ValidationPlugin } from '../validators';
 
 /**
  * CheckPlugin
@@ -39,8 +38,6 @@ export class CheckPlugin extends ValidationPlugin {
     }
 
     configureGenerator(g: Nunjucks) {
-
-        g.env.addGlobal('imports2TS', toString);
 
         g.env.addGlobal('hasChecks', (s: Schema, mode: string) => {
 

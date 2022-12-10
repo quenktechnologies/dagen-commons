@@ -2,7 +2,7 @@ import { Context } from '@quenk/dagen/lib/compiler';
 import { Future } from '@quenk/noni/lib/control/monad/future';
 import { Schema } from '@quenk/dagen/lib/schema';
 import { Nunjucks } from '@quenk/dagen/lib/compiler/generator/nunjucks';
-import { ValidationPlugin } from '../validation';
+import { ValidationPlugin } from '../validators';
 /**
  * CheckPlugin
  */
