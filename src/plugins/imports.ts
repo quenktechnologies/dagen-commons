@@ -23,7 +23,7 @@ export class ImportsPlugin extends AbstractPlugin {
     configureGenerator(g: Nunjucks) {
 
         g.env.addGlobal('imports2TS', 
-          (existing: ImportMap, target: ImportMap = {}) =>
+          (existing: ImportMap={}, target: ImportMap = {}) =>
           toString(merge(existing, target)));
 
         return pure(g);
