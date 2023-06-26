@@ -5,7 +5,7 @@
 
 /** imports */
 import { Value } from '@quenk/noni/lib/data/json';
-import { Pointer, Import } from '@quenk/noni/lib/platform/node/module/pointer';
+import { Pointer, Import, isPointer } from '@quenk/noni/lib/platform/node/module/pointer';
 import { Schema, isObjectType, isSumType, isArrayType } from '@quenk/dagen/lib/schema';
 import { isObject, isString } from '@quenk/noni/lib/data/type';
 import { reduce } from '@quenk/noni/lib/data/record';
@@ -47,13 +47,21 @@ export const takePointers =
 
         if (isString(target)) {
 
-            imps.push(target);
+            if (isPointer(target))
+                imps.push(target);
 
         } else if (Array.isArray(target)) {
 
             let list = <Spec[]>target;
 
-            list.forEach(m => imps.push(isString(m) ? m : m[0]));
+            list.forEach(m => {
+
+                if (isString(m) && isPointer(m))
+                    imps.push(m);
+
+                if (isPointer(m[0]))
+                    imps.push(m[0]);
+            });
 
         }
 
