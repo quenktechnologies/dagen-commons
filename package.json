@@ -1,6 +1,6 @@
 {
   "name": "@quenk/dagen-commons",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Commons library for using dagen to generate project boilerplate.",
   "types": "lib/index.d.ts",
   "scripts": {
