@@ -1,7 +1,9 @@
+import { Value } from '@quenk/noni/lib/data/json';
 import { Either, right, left } from '@quenk/noni/lib/data/either';
 import {
     compileList,
-    getMember
+    getMember,
+    isPointer
 } from '@quenk/noni/lib/platform/node/module/pointer';
 import { isObject, isString } from '@quenk/noni/lib/data/type';
 import { map, clone } from '@quenk/noni/lib/data/record';
@@ -34,6 +36,9 @@ export const takeImports = (s: Schema, key: string)
 
 }
 
+const _getMember = (target: Value) =>
+    [isString(target) && isPointer(target) ? getMember(target) : target];
+
 /**
  * castPointers turns all occurences of pointers to preconditions into
  * their code equivalent.
@@ -48,12 +53,12 @@ export const castPointers = (s: Schema, key: string): Schema => {
 
     if (isString(target)) {
 
-        s[key] = [getMember(target)];
+        s[key] = _getMember(target);
 
     } else if (Array.isArray(target)) {
 
-        s[key] =  (<Spec[]>target).map(m => isString(m) ?
-            getMember(m) : `${getMember(m[0])}(${m[1].join(',')})`);
+        s[key] = (<Spec[]>target).map(m => isString(m) ?
+            _getMember(m) : `${_getMember(m[0])}(${m[1].join(',')})`);
 
     }
 
